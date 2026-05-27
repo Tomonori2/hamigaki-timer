@@ -1,4 +1,4 @@
-const CACHE = 'hamigaki-v1';
+const CACHE = 'hamigaki-v3';
 const FILES = ['./', './index.html', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', e => {
