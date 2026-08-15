@@ -7,6 +7,8 @@
 
 <img src="ogp.png" alt="はみがきタイマー" width="640">
 
+<img src="promo/demo.gif" alt="はみがきが終わるとスタンプがつき、クラス一覧に反映される様子" width="300">
+
 ## できること
 
 | 子ども向け | 先生向け |

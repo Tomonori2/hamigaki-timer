@@ -6,6 +6,8 @@
 | `flyer.html` | チラシのもと。文言や連絡先を書きかえたいときはこちらを編集 |
 | `qr.png` | アプリURLのQRコード（おたより・掲示物用） |
 | `kokuchi.md` | SNS・おたより・紹介メッセージの文面テンプレート |
+| `demo.mp4` | 操作のデモ動画（26秒）。X・note・Instagramに添える用 |
+| `demo.gif` | 完走〜スタンプ反映のハイライト（8秒）。READMEやブログの埋め込み用 |
 | `ogp-source.html` | SNSカード画像（`../ogp.png`）のもと |
 
 ## 書きかえるときは
@@ -46,3 +48,18 @@ qr.make_image(fill_color='#5a3a12', back_color='white').save('promo/qr.png')"
 ```
 
 > チラシの中の画面写真は `../docs/` を参照しています。`flyer.html` 単体をメールで送ると画像が表示されないため、配るときは `flyer.pdf` を使ってください。
+
+## デモ動画の作り直し
+
+`promo/demo-record.js` を Playwright で実行すると webm が録画されます。MP4／GIF への変換は ffmpeg で:
+
+```bash
+# MP4（X・note用）
+ffmpeg -ss 19 -i video/xxx.webm -vf "setpts=PTS/1.5,scale=720:-2:flags=lanczos,fps=30" \
+  -c:v libx264 -pix_fmt yuv420p -crf 23 -movflags +faststart promo/demo.mp4
+
+# GIF（README埋め込み用・ハイライトだけ）
+ffmpeg -ss 16.5 -t 8 -i promo/demo.mp4 \
+  -vf "fps=12,scale=340:-2:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=96[p];[s1][p]paletteuse" \
+  -loop 0 promo/demo.gif
+```
