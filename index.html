@@ -448,6 +448,15 @@
       </div>
       <p class="muted" id="storageInfo" style="text-align:left;margin-top:10px"></p>
     </div>
+
+    <div class="card" id="feedbackCard" style="display:none">
+      <div class="card-title">ごいけん・ごようぼう</div>
+      <p class="muted" style="text-align:left;line-height:1.6;margin-bottom:10px">
+        「こんな きのうが ほしい」「ここが つかいにくい」など、つかってみた かんそうを おしえてください。<br>
+        いただいた こえを もとに かいぜんしていきます。
+      </p>
+      <button class="btn-s" onclick="openFeedback()">✉️ ごいけんを おくる</button>
+    </div>
   </div>
 </section>
 
@@ -473,6 +482,12 @@ const SLOTS = [
   { k:'e', label:'よる',   icon:'🌙' }
 ];
 const STORE_KEY = 'hamigaki_class_v1';
+
+// ===== ごいけん・ごようぼうの あて先 =====
+// ここにURLを入れると「⚙️ めいぼ」画面に送信ボタンが出ます。空のままだとボタンは出ません。
+//   例1）Googleフォーム : 'https://forms.gle/xxxxxxxx'
+//   例2）メール        : 'mailto:あなたのアドレス@example.com'
+const FEEDBACK_URL = '';
 
 // ===== ちいさな道具 =====
 function esc(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
@@ -938,6 +953,25 @@ function renderAdmin(){
     'いまの データりょう：約 ' + (bytes/1024).toFixed(1) + ' KB（このブラウザ内）';
 }
 
+// ===== ごいけん・ごようぼう =====
+function openFeedback(){
+  if(!FEEDBACK_URL) return;
+  let url = FEEDBACK_URL;
+  // メールのときは、なまえを含まない かんたんな利用状況を下書きに入れておく
+  if(/^mailto:/i.test(url)){
+    const days = S.children.reduce((n,k)=>n + Object.keys(S.stamps[k.id] || {}).length, 0);
+    const body = '\n\n---（参考：おくらなくても かまいません）\n'
+               + 'にんずう ' + S.children.length + 'にん ／ きろく ' + days + 'にちぶん\n'
+               + 'はみがきの ながさ ' + (S.settings.duration/60) + 'ふん\n';
+    url += (url.indexOf('?') >= 0 ? '&' : '?')
+        + 'subject=' + encodeURIComponent('はみがきタイマーの ごいけん')
+        + '&body=' + encodeURIComponent(body);
+  }
+  const a = document.createElement('a');
+  a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+  document.body.appendChild(a); a.click(); a.remove();
+}
+
 // ===== 書き出し・読み込み =====
 // ブラウザによっては日本語のファイル名が落ちて「download」になってしまうため、
 // ファイル名は半角英数字だけにする（クラス名はファイルの中身に入れている）
@@ -1170,6 +1204,7 @@ function renderAll(){
 // ===== 起動 =====
 (function init(){
   document.getElementById('soundBtn').textContent = soundOn ? '🔊' : '🔇';
+  if(FEEDBACK_URL) document.getElementById('feedbackCard').style.display = 'block';
   document.querySelectorAll('.dur-btn').forEach(b=>b.classList.toggle('active', parseInt(b.dataset.dur,10) === TOTAL));
   document.getElementById('timerText').textContent = fmt(TOTAL);
   updateRing(TOTAL);
