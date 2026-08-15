@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>OGP画像のもと</title>
+<!--
+  SNSやLINEでリンクを貼ったときに表示されるカード画像（ogp.png）のもとになるページです。
+  文言を変えたら、promo/README-promo.md の手順で ogp.png を作り直してください。
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Nunito', sans-serif; background:#eee; }
+  .ogp {
+    width:1200px; height:630px; position:relative; overflow:hidden;
+    background:linear-gradient(150deg,#ffe082,#ffb74d 55%,#ff8a65);
+    display:flex; align-items:center; padding:0 64px; gap:40px;
+  }
+  .ogp::before { content:''; position:absolute; inset:0;
+    background:radial-gradient(circle at 78% 30%, rgba(255,255,255,.45), transparent 42%); }
+  .left { position:relative; flex:1; }
+  .badge { display:inline-block; background:#fff; color:#c17a00; font-weight:900; font-size:26px;
+           padding:8px 22px; border-radius:40px; box-shadow:0 6px 18px rgba(0,0,0,.12); margin-bottom:22px; }
+  h1 { font-size:82px; color:#fff; font-weight:900; letter-spacing:2px; line-height:1.15;
+       text-shadow:0 5px 18px rgba(160,80,0,.32); margin-bottom:18px; }
+  .sub { font-size:32px; color:#fff; font-weight:900; line-height:1.5;
+         text-shadow:0 3px 10px rgba(160,80,0,.28); margin-bottom:30px; }
+  .points { display:flex; gap:10px; flex-wrap:wrap; }
+  .point { background:rgba(255,255,255,.92); color:#a86a10; font-weight:900; font-size:24px;
+           padding:10px 20px; border-radius:14px; box-shadow:0 4px 12px rgba(0,0,0,.08); }
+  .right { position:relative; width:460px; height:500px; flex:none; }
+  .ch { position:absolute; border-radius:50%; border:8px solid rgba(255,255,255,.92);
+        box-shadow:0 14px 40px rgba(150,80,10,.35); background:#fff7ef; overflow:hidden; }
+  .ch img, .ch svg { width:100%; height:100%; display:block; }
+  .c1 { width:250px; height:250px; left:105px; top:0;    z-index:3; }
+  .c2 { width:185px; height:185px; left:0;     top:190px; z-index:2; }
+  .c3 { width:185px; height:185px; left:245px; top:215px; z-index:1; background:#fdf3f7; }
+  .stamps { position:absolute; left:40px; top:355px; z-index:4; background:#fff; border-radius:20px;
+            padding:14px 18px; box-shadow:0 10px 30px rgba(150,80,10,.28); }
+  .stamps .row { display:flex; gap:8px; align-items:center; font-size:22px; font-weight:900; color:#8a6a45; }
+  .stamps .row + .row { margin-top:8px; }
+  .dot { width:26px; height:26px; border-radius:8px; background:#e8f5e9; border:2px solid #81c784;
+         display:flex; align-items:center; justify-content:center; font-size:15px; }
+  .dot.off { background:#f4f4f4; border-color:#e4e4e4; }
+</style>
+</head>
+<body>
+<div class="ogp">
+  <div class="left">
+    <div class="badge">ほいくえん・幼稚園むけ／無料</div>
+    <h1>はみがき<br>タイマー</h1>
+    <div class="sub">クラスみんなのはみがきを、<br>タブレット1台で ぱっと記録。</div>
+    <div class="points">
+      <div class="point">登録なし</div>
+      <div class="point">オフラインOK</div>
+      <div class="point">データは端末の中だけ</div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="ch c1"><img src="../icon-192.png" alt="ライオン"></div>
+    <div class="ch c2">
+      <svg viewBox="0 0 140 140">
+        <circle cx="34" cy="36" r="20" fill="#8a5a38"/><circle cx="34" cy="36" r="10" fill="#d29b72"/>
+        <circle cx="106" cy="36" r="20" fill="#8a5a38"/><circle cx="106" cy="36" r="10" fill="#d29b72"/>
+        <circle cx="70" cy="78" r="46" fill="#a86c45"/>
+        <ellipse cx="40" cy="88" rx="9" ry="6" fill="#e2836f" opacity=".45"/>
+        <ellipse cx="100" cy="88" rx="9" ry="6" fill="#e2836f" opacity=".45"/>
+        <ellipse cx="70" cy="95" rx="26" ry="19" fill="#eccaa8"/>
+        <ellipse cx="70" cy="84" rx="9" ry="6.5" fill="#4a2c1a"/>
+        <path d="M70 90v6" stroke="#4a2c1a" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <path d="M70 96q-8 8-14 1" stroke="#4a2c1a" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <path d="M70 96q8 8 14 1" stroke="#4a2c1a" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <circle cx="52" cy="64" r="6" fill="#3b2317"/><circle cx="88" cy="64" r="6" fill="#3b2317"/>
+        <circle cx="54" cy="62" r="2" fill="#fff"/><circle cx="90" cy="62" r="2" fill="#fff"/>
+      </svg>
+    </div>
+    <div class="ch c3">
+      <svg viewBox="0 0 140 140">
+        <g transform="rotate(-13 70 90)"><ellipse cx="52" cy="38" rx="12" ry="33" fill="#fffdfd" stroke="#eed7e0" stroke-width="2"/><ellipse cx="52" cy="40" rx="6" ry="24" fill="#f9c0d4"/></g>
+        <g transform="rotate(13 70 90)"><ellipse cx="88" cy="38" rx="12" ry="33" fill="#fffdfd" stroke="#eed7e0" stroke-width="2"/><ellipse cx="88" cy="40" rx="6" ry="24" fill="#f9c0d4"/></g>
+        <circle cx="70" cy="90" r="43" fill="#fffdfd" stroke="#eed7e0" stroke-width="2"/>
+        <path d="M24 88h16M24 96h16M116 88h-16M116 96h-16" stroke="#e6cbd6" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <ellipse cx="42" cy="99" rx="9" ry="6" fill="#f9a8c0" opacity=".6"/>
+        <ellipse cx="98" cy="99" rx="9" ry="6" fill="#f9a8c0" opacity=".6"/>
+        <circle cx="54" cy="84" r="6" fill="#5b4636"/><circle cx="86" cy="84" r="6" fill="#5b4636"/>
+        <circle cx="56" cy="82" r="2" fill="#fff"/><circle cx="88" cy="82" r="2" fill="#fff"/>
+        <path d="M64 96h12l-6 6z" fill="#f4809f"/>
+        <path d="M70 103q-7 7-13 1M70 103q7 7 13 1" stroke="#c98aa0" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+    <div class="stamps">
+      <div class="row"><span>ひまり</span><span class="dot">⭐</span><span class="dot">⭐</span><span class="dot off"></span></div>
+      <div class="row"><span>はると</span><span class="dot">⭐</span><span class="dot">⭐</span><span class="dot">⭐</span></div>
+      <div class="row"><span>ゆい　</span><span class="dot">⭐</span><span class="dot">⭐</span><span class="dot off"></span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
